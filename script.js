@@ -2,10 +2,6 @@ window.addEventListener("load", function () {
     "use strict";
     
     let usersContainer = document.querySelector("#users");
-    let userName = document.querySelector("#name");
-    let userAge = document.querySelector("#age");
-    let userMail = document.querySelector("#email");
-    let addBtn = document.querySelector("#button");
 
     let users = new Table({
         tableClass: "table table-bordered table-hover"
@@ -38,16 +34,4 @@ window.addEventListener("load", function () {
 
     });
 
-
-    addBtn.addEventListener("click", function () {
-        if (userName.value ==="" && userAge.value === "" && userMail.value === "") {
-            alert("Заполните все поля!");
-        } else {
-            users.addRow(userName.value, userAge.value, userMail.value);
-            usersContainer.innerHTML = users.generate();
-            userName.value = "";
-            userAge.value = "";
-            userMail.value = "";
-        }
-    });
 });
