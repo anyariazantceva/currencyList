@@ -11,6 +11,11 @@ window.addEventListener("load", function () {
         tableClass: "table table-bordered table-hover"
     });
 
+    const request = new XMLHttpRequest();
+    let URL = "https://www.cbr-xml-daily.ru/daily_json.js";
+    request.open("GET", URL);
+    request.send();
+
     users.addHeadingsRow("Имя", "Возраст", "Email");
 
     users.addRow("Иван", 39, "ivan@yandex.ru");
