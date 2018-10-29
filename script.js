@@ -23,8 +23,6 @@ window.addEventListener("load", function () {
             users.addRow(currency.Valute.GBP.Name, currency.Valute.GBP.NumCode, currency.Valute.GBP.Value);
             users.addRow(currency.Valute.CNY.Name, currency.Valute.CNY.NumCode, currency.Valute.CNY.Value);
             users.addRow(currency.Valute.JPY.Name, currency.Valute.JPY.NumCode, currency.Valute.JPY.Value);
-            users.addRow("Светлана", 19, "svetko@mail.ru");
-            users.addRow("Наталья", 23, "nataly@gmail.com");
 
             usersContainer.innerHTML = users.generate();
         } else {
