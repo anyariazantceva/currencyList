@@ -16,13 +16,28 @@ window.addEventListener("load", function () {
     request.open("GET", URL);
     request.send();
 
-    users.addHeadingsRow("Имя", "Возраст", "Email");
+    request.addEventListener("load", function() {
+        if(request.status === 200) {
+            let currency = JSON.parse(request.responseText);
 
-    users.addRow("Иван", 39, "ivan@yandex.ru");
-    users.addRow("Светлана", 19, "svetko@mail.ru");
-    users.addRow("Наталья", 23, "nataly@gmail.com");
+            users.addHeadingsRow("Название", "Код", "Курс к рублю");
 
-    usersContainer.innerHTML = users.generate();
+            users.addRow(currency.Valute.USD.Name, currency.Valute.USD.NumCode, currency.Valute.USD.Value);
+            users.addRow(currency.Valute.EUR.Name, currency.Valute.EUR.NumCode, currency.Valute.EUR.Value);
+            users.addRow(currency.Valute.GBP.Name, currency.Valute.GBP.NumCode, currency.Valute.GBP.Value);
+            users.addRow(currency.Valute.CNY.Name, currency.Valute.CNY.NumCode, currency.Valute.CNY.Value);
+            users.addRow(currency.Valute.JPY.Name, currency.Valute.JPY.NumCode, currency.Valute.JPY.Value);
+            users.addRow("Светлана", 19, "svetko@mail.ru");
+            users.addRow("Наталья", 23, "nataly@gmail.com");
+
+            usersContainer.innerHTML = users.generate();
+        } else {
+            alert("Данные не поступили")
+        }
+
+
+    });
+
 
     addBtn.addEventListener("click", function () {
         if (userName.value ==="" && userAge.value === "" && userMail.value === "") {
